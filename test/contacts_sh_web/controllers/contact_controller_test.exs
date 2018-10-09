@@ -7,14 +7,21 @@ defmodule ContactsShWeb.ContactControllerTest do
   @create_attrs %{
     delete: false,
     email: "some email",
-    last_name: "some last_name",
+    last_name: "LastNameA",
+    name: "some name",
+    phone: "some phone"
+  }
+  @create_attrs_2 %{
+    delete: false,
+    email: "some email",
+    last_name: "LastNameB",
     name: "some name",
     phone: "some phone"
   }
   @update_attrs %{
     delete: false,
     email: "some updated email",
-    last_name: "some updated last_name",
+    last_name: "UpdatedLastName",
     name: "some updated name",
     phone: "some updated phone"
   }
@@ -25,14 +32,25 @@ defmodule ContactsShWeb.ContactControllerTest do
     contact
   end
 
+  def fixture(:contacts) do
+    {:ok, contact_2} = Contacts.create_contact(@create_attrs_2)
+    {:ok, contact} = Contacts.create_contact(@create_attrs)
+    [contact_2, contact]
+  end
+
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
   describe "index" do
-    test "lists all contacts ordered by last_name", %{conn: conn} do
+    setup [:create_contacts]
+
+    test "lists all contacts ordered by last_name", %{conn: conn, contacts: contacts} do
       conn = get(conn, contact_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
+      assert length(json_response(conn, 200)["data"]) == 2
+      [contact_1, contact_2] = json_response(conn, 200)["data"]
+      assert contact_1["last_name"] == "LastNameA"
+      assert contact_2["last_name"] == "LastNameB"
     end
   end
 
@@ -47,7 +65,7 @@ defmodule ContactsShWeb.ContactControllerTest do
                "id" => id,
                "delete" => false,
                "email" => "some email",
-               "last_name" => "some last_name",
+               "last_name" => "LastNameA",
                "name" => "some name",
                "phone" => "some phone"
              }
@@ -72,7 +90,7 @@ defmodule ContactsShWeb.ContactControllerTest do
                "id" => id,
                "delete" => false,
                "email" => "some updated email",
-               "last_name" => "some updated last_name",
+               "last_name" => "UpdatedLastName",
                "name" => "some updated name",
                "phone" => "some updated phone"
              }
@@ -100,5 +118,10 @@ defmodule ContactsShWeb.ContactControllerTest do
   defp create_contact(_) do
     contact = fixture(:contact)
     {:ok, contact: contact}
+  end
+
+  defp create_contacts(_) do
+    contacts = fixture(:contacts)
+    {:ok, contacts: contacts}
   end
 end

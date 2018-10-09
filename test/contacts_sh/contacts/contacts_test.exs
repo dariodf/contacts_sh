@@ -9,14 +9,21 @@ defmodule ContactsSh.ContactsTest do
     @valid_attrs %{
       delete: false,
       email: "some email",
-      last_name: "some last_name",
+      last_name: "LastNameA",
+      name: "some name",
+      phone: "some phone"
+    }
+    @valid_attrs_2 %{
+      delete: false,
+      email: "some email",
+      last_name: "LastNameB",
       name: "some name",
       phone: "some phone"
     }
     @update_attrs %{
       delete: false,
       email: "some updated email",
-      last_name: "some updated last_name",
+      last_name: "UpdatedLastName",
       name: "some updated name",
       phone: "some updated phone"
     }
@@ -31,9 +38,24 @@ defmodule ContactsSh.ContactsTest do
       contact
     end
 
+    def contacts_fixture() do
+      {:ok, contact_2} =
+        @valid_attrs_2
+        |> Contacts.create_contact()
+
+      {:ok, contact_1} =
+        @valid_attrs
+        |> Contacts.create_contact()
+
+      [contact_2, contact_1]
+    end
+
     test "list_contacts/0 returns all contacts ordered by last_name" do
-      contact = contact_fixture()
-      assert Contacts.list_contacts() == [contact]
+      [contact_2, contact_1] = contacts_fixture()
+      assert length(Contacts.list_contacts()) == 2
+      [contact_1, contact_2] = Contacts.list_contacts()
+      assert contact_1.last_name == "LastNameA"
+      assert contact_2.last_name == "LastNameB"
     end
 
     test "get_contact!/1 returns the contact with given id" do
@@ -45,7 +67,7 @@ defmodule ContactsSh.ContactsTest do
       assert {:ok, %Contact{} = contact} = Contacts.create_contact(@valid_attrs)
       assert contact.delete == false
       assert contact.email == "some email"
-      assert contact.last_name == "some last_name"
+      assert contact.last_name == "LastNameA"
       assert contact.name == "some name"
       assert contact.phone == "some phone"
     end
@@ -60,7 +82,7 @@ defmodule ContactsSh.ContactsTest do
       assert %Contact{} = contact
       assert contact.delete == false
       assert contact.email == "some updated email"
-      assert contact.last_name == "some updated last_name"
+      assert contact.last_name == "UpdatedLastName"
       assert contact.name == "some updated name"
       assert contact.phone == "some updated phone"
     end
