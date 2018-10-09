@@ -6,8 +6,20 @@ defmodule ContactsSh.ContactsTest do
   describe "contacts" do
     alias ContactsSh.Contacts.Contact
 
-    @valid_attrs %{delete: true, email: "some email", last_name: "some last_name", name: "some name", phone: "some phone"}
-    @update_attrs %{delete: false, email: "some updated email", last_name: "some updated last_name", name: "some updated name", phone: "some updated phone"}
+    @valid_attrs %{
+      delete: false,
+      email: "some email",
+      last_name: "some last_name",
+      name: "some name",
+      phone: "some phone"
+    }
+    @update_attrs %{
+      delete: false,
+      email: "some updated email",
+      last_name: "some updated last_name",
+      name: "some updated name",
+      phone: "some updated phone"
+    }
     @invalid_attrs %{delete: nil, email: nil, last_name: nil, name: nil, phone: nil}
 
     def contact_fixture(attrs \\ %{}) do
@@ -19,7 +31,7 @@ defmodule ContactsSh.ContactsTest do
       contact
     end
 
-    test "list_contacts/0 returns all contacts" do
+    test "list_contacts/0 returns all contacts ordered by last_name" do
       contact = contact_fixture()
       assert Contacts.list_contacts() == [contact]
     end
@@ -31,7 +43,7 @@ defmodule ContactsSh.ContactsTest do
 
     test "create_contact/1 with valid data creates a contact" do
       assert {:ok, %Contact{} = contact} = Contacts.create_contact(@valid_attrs)
-      assert contact.delete == true
+      assert contact.delete == false
       assert contact.email == "some email"
       assert contact.last_name == "some last_name"
       assert contact.name == "some name"
