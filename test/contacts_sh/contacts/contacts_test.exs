@@ -51,11 +51,20 @@ defmodule ContactsSh.ContactsTest do
     end
 
     test "list_contacts/0 returns all contacts ordered by last_name" do
-      [contact_2, contact_1] = contacts_fixture()
-      assert length(Contacts.list_contacts()) == 2
-      [contact_1, contact_2] = Contacts.list_contacts()
-      assert contact_1.last_name == "LastNameA"
-      assert contact_2.last_name == "LastNameB"
+      [gen_contact_2, gen_contact_1] = contacts_fixture()
+      contacts = Contacts.list_contacts()
+      assert length(contacts) == 2
+      [contact_1, contact_2] = contacts
+      assert contact_1.last_name == gen_contact_1.last_name
+      assert contact_2.last_name == gen_contact_2.last_name
+    end
+
+    test "list_contacts_by_last_name/1 returns all contacts with the specified last_name" do
+      [_, gen_contact_1] = contacts_fixture()
+      contacts = Contacts.list_contacts_by_last_name(gen_contact_1.last_name)
+      assert length(contacts) == 1
+      [contact_1] = contacts
+      assert contact_1.last_name == gen_contact_1.last_name
     end
 
     test "get_contact!/1 returns the contact with given id" do

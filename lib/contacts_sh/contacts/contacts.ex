@@ -24,6 +24,21 @@ defmodule ContactsSh.Contacts do
   end
 
   @doc """
+  Returns the list of contacts by their last name.
+
+  ## Examples
+
+      iex> list_contacts_by_last_name("LastNameA")
+      [%Contact{last_name: "LastNameA"}, ...]
+
+  """
+  def list_contacts_by_last_name(last_name) do
+    Contact
+    |> where(last_name: ^last_name)
+    |> Repo.all()
+  end
+
+  @doc """
   Gets a single contact.
 
   Raises `Ecto.NoResultsError` if the Contact does not exist.

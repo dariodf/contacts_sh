@@ -45,12 +45,22 @@ defmodule ContactsShWeb.ContactControllerTest do
   describe "index" do
     setup [:create_contacts]
 
-    test "lists all contacts ordered by last_name", %{conn: conn, contacts: contacts} do
+    test "lists all contacts ordered by last_name", %{
+      conn: conn,
+      contacts: [gen_contact_2, gen_contact_1]
+    } do
       conn = get(conn, contact_path(conn, :index))
       assert length(json_response(conn, 200)["data"]) == 2
       [contact_1, contact_2] = json_response(conn, 200)["data"]
-      assert contact_1["last_name"] == "LastNameA"
-      assert contact_2["last_name"] == "LastNameB"
+      assert contact_1["last_name"] == gen_contact_1.last_name
+      assert contact_2["last_name"] == gen_contact_2.last_name
+    end
+
+    test "get contacts by last_name", %{conn: conn, contacts: [_, gen_contact_1]} do
+      conn = get(conn, contact_path(conn, :index, last_name: gen_contact_1.last_name))
+      assert length(json_response(conn, 200)["data"]) == 1
+      [contact_1] = json_response(conn, 200)["data"]
+      assert contact_1["last_name"] == gen_contact_1.last_name
     end
   end
 
