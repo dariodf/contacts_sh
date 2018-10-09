@@ -18,7 +18,9 @@ defmodule ContactsSh.Contacts do
 
   """
   def list_contacts do
-    Repo.all(Contact)
+    Contact
+    |> order_by(asc: :last_name)
+    |> Repo.all()
   end
 
   @doc """
