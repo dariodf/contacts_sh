@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>ContactsSh.Contacts – Contacts SH v0.0.1</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-a8a58576b8.js"></script>
+    <script src="dist/sidebar_items-c63bd160ec.js"></script>
     
   </head>
   <body data-type="modules">
@@ -112,6 +112,14 @@ ContactsSh.Contacts
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#clean_contacts/0">clean_contacts()</a>
+  </div>
+    <div class="summary-synopsis"><p>Deletes contacts marked for deletion. 
+Returns a tuple with the amount of deleted contacts and the deleted contacts list</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#create_contact/1">create_contact(attrs \\ %{})</a>
   </div>
     <div class="summary-synopsis"><p>Creates a contact</p>
@@ -121,7 +129,7 @@ ContactsSh.Contacts
   <div class="summary-signature">
     <a href="#delete_contact/1">delete_contact(contact)</a>
   </div>
-    <div class="summary-synopsis"><p>Deletes a Contact</p>
+    <div class="summary-synopsis"><p>Marks a Contact for deletion. The contact shouldn’t appear in listings anymore</p>
 </div>
 </div>
 <div class="summary-row">
@@ -277,7 +285,7 @@ ContactsSh.Contacts
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">change_contact(contact)</span>
-      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L128" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L154" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -289,8 +297,36 @@ ContactsSh.Contacts
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_contact</span><span class="p" data-group-id="1073627546-1">(</span><span class="n">contact</span><span class="p" data-group-id="1073627546-1">)</span><span class="w">
-</span><span class="p" data-group-id="1073627546-2">%</span><span class="nc" data-group-id="1073627546-2">Ecto.Changeset</span><span class="p" data-group-id="1073627546-2">{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1073627546-3">%</span><span class="nc" data-group-id="1073627546-3">Contact</span><span class="p" data-group-id="1073627546-3">{</span><span class="p" data-group-id="1073627546-3">}</span><span class="p" data-group-id="1073627546-2">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_contact</span><span class="p" data-group-id="5179881583-1">(</span><span class="n">contact</span><span class="p" data-group-id="5179881583-1">)</span><span class="w">
+</span><span class="p" data-group-id="5179881583-2">%</span><span class="nc" data-group-id="5179881583-2">Ecto.Changeset</span><span class="p" data-group-id="5179881583-2">{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5179881583-3">%</span><span class="nc" data-group-id="5179881583-3">Contact</span><span class="p" data-group-id="5179881583-3">{</span><span class="p" data-group-id="5179881583-3">}</span><span class="p" data-group-id="5179881583-2">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="clean_contacts/0">
+    <div class="detail-header">
+    <a href="#clean_contacts/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">clean_contacts()</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L139" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>clean_contacts() :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), [<a href="#t:contact/0">contact</a>()]} | {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), nil}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Deletes contacts marked for deletion. 
+Returns a tuple with the amount of deleted contacts and the deleted contacts list.</p>
+<h2 id="clean_contacts/0-examples" class="section-heading">
+  <a href="#clean_contacts/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">clean_contacts</span><span class="p" data-group-id="0579398750-1">(</span><span class="p" data-group-id="0579398750-1">)</span><span class="w">
+</span><span class="p" data-group-id="0579398750-2">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0579398750-3">[</span><span class="p" data-group-id="0579398750-4">%</span><span class="nc" data-group-id="0579398750-4">Contact</span><span class="p" data-group-id="0579398750-4">{</span><span class="p" data-group-id="0579398750-4">}</span><span class="p" data-group-id="0579398750-3">]</span><span class="p" data-group-id="0579398750-2">}</span></code></pre>
   </section>
 </div>
 <div class="detail" id="create_contact/1">
@@ -302,7 +338,7 @@ ContactsSh.Contacts
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">create_contact(attrs \\ %{})</span>
-      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L77" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L84" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -318,11 +354,11 @@ ContactsSh.Contacts
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_contact</span><span class="p" data-group-id="8944281262-1">(</span><span class="p" data-group-id="8944281262-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="8944281262-2">}</span><span class="p" data-group-id="8944281262-1">)</span><span class="w">
-</span><span class="p" data-group-id="8944281262-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8944281262-4">%</span><span class="nc" data-group-id="8944281262-4">Contact</span><span class="p" data-group-id="8944281262-4">{</span><span class="p" data-group-id="8944281262-4">}</span><span class="p" data-group-id="8944281262-3">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_contact</span><span class="p" data-group-id="7534187717-1">(</span><span class="p" data-group-id="7534187717-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="7534187717-2">}</span><span class="p" data-group-id="7534187717-1">)</span><span class="w">
+</span><span class="p" data-group-id="7534187717-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7534187717-4">%</span><span class="nc" data-group-id="7534187717-4">Contact</span><span class="p" data-group-id="7534187717-4">{</span><span class="p" data-group-id="7534187717-4">}</span><span class="p" data-group-id="7534187717-3">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">create_contact</span><span class="p" data-group-id="8944281262-5">(</span><span class="p" data-group-id="8944281262-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="8944281262-6">}</span><span class="p" data-group-id="8944281262-5">)</span><span class="w">
-</span><span class="p" data-group-id="8944281262-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8944281262-8">%</span><span class="nc" data-group-id="8944281262-8">Ecto.Changeset</span><span class="p" data-group-id="8944281262-8">{</span><span class="p" data-group-id="8944281262-8">}</span><span class="p" data-group-id="8944281262-7">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_contact</span><span class="p" data-group-id="7534187717-5">(</span><span class="p" data-group-id="7534187717-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="7534187717-6">}</span><span class="p" data-group-id="7534187717-5">)</span><span class="w">
+</span><span class="p" data-group-id="7534187717-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7534187717-8">%</span><span class="nc" data-group-id="7534187717-8">Ecto.Changeset</span><span class="p" data-group-id="7534187717-8">{</span><span class="p" data-group-id="7534187717-8">}</span><span class="p" data-group-id="7534187717-7">}</span></code></pre>
   </section>
 </div>
 <div class="detail" id="delete_contact/1">
@@ -332,7 +368,7 @@ ContactsSh.Contacts
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">delete_contact(contact)</span>
-      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L115" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L122" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -342,17 +378,17 @@ ContactsSh.Contacts
       </div>
   </div>
   <section class="docstring">
-<p>Deletes a Contact.</p>
+<p>Marks a Contact for deletion. The contact shouldn’t appear in listings anymore.</p>
 <h2 id="delete_contact/1-examples" class="section-heading">
   <a href="#delete_contact/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_contact</span><span class="p" data-group-id="0399249815-1">(</span><span class="n">contact</span><span class="p" data-group-id="0399249815-1">)</span><span class="w">
-</span><span class="p" data-group-id="0399249815-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0399249815-3">%</span><span class="nc" data-group-id="0399249815-3">Contact</span><span class="p" data-group-id="0399249815-3">{</span><span class="p" data-group-id="0399249815-3">}</span><span class="p" data-group-id="0399249815-2">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_contact</span><span class="p" data-group-id="2446695177-1">(</span><span class="n">contact</span><span class="p" data-group-id="2446695177-1">)</span><span class="w">
+</span><span class="p" data-group-id="2446695177-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2446695177-3">%</span><span class="nc" data-group-id="2446695177-3">Contact</span><span class="p" data-group-id="2446695177-3">{</span><span class="p" data-group-id="2446695177-3">}</span><span class="p" data-group-id="2446695177-2">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_contact</span><span class="p" data-group-id="0399249815-4">(</span><span class="n">contact</span><span class="p" data-group-id="0399249815-4">)</span><span class="w">
-</span><span class="p" data-group-id="0399249815-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0399249815-6">%</span><span class="nc" data-group-id="0399249815-6">Ecto.Changeset</span><span class="p" data-group-id="0399249815-6">{</span><span class="p" data-group-id="0399249815-6">}</span><span class="p" data-group-id="0399249815-5">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_contact</span><span class="p" data-group-id="2446695177-4">(</span><span class="n">contact</span><span class="p" data-group-id="2446695177-4">)</span><span class="w">
+</span><span class="p" data-group-id="2446695177-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2446695177-6">%</span><span class="nc" data-group-id="2446695177-6">Ecto.Changeset</span><span class="p" data-group-id="2446695177-6">{</span><span class="p" data-group-id="2446695177-6">}</span><span class="p" data-group-id="2446695177-5">}</span></code></pre>
   </section>
 </div>
 <div class="detail" id="get_contact!/1">
@@ -362,7 +398,7 @@ ContactsSh.Contacts
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get_contact!(id)</span>
-      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L62" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L64" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -379,10 +415,10 @@ ContactsSh.Contacts
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_contact!</span><span class="p" data-group-id="7733857374-1">(</span><span class="mi">123</span><span class="p" data-group-id="7733857374-1">)</span><span class="w">
-</span><span class="p" data-group-id="7733857374-2">%</span><span class="nc" data-group-id="7733857374-2">Contact</span><span class="p" data-group-id="7733857374-2">{</span><span class="p" data-group-id="7733857374-2">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_contact!</span><span class="p" data-group-id="4106675410-1">(</span><span class="mi">123</span><span class="p" data-group-id="4106675410-1">)</span><span class="w">
+</span><span class="p" data-group-id="4106675410-2">%</span><span class="nc" data-group-id="4106675410-2">Contact</span><span class="p" data-group-id="4106675410-2">{</span><span class="p" data-group-id="4106675410-2">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">get_contact!</span><span class="p" data-group-id="7733857374-3">(</span><span class="mi">456</span><span class="p" data-group-id="7733857374-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_contact!</span><span class="p" data-group-id="4106675410-3">(</span><span class="mi">456</span><span class="p" data-group-id="4106675410-3">)</span><span class="w">
 </span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>
   </section>
 </div>
@@ -409,8 +445,8 @@ ContactsSh.Contacts
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_contacts</span><span class="p" data-group-id="1376969421-1">(</span><span class="p" data-group-id="1376969421-1">)</span><span class="w">
-</span><span class="p" data-group-id="1376969421-2">[</span><span class="p" data-group-id="1376969421-3">%</span><span class="nc" data-group-id="1376969421-3">Contact</span><span class="p" data-group-id="1376969421-3">{</span><span class="p" data-group-id="1376969421-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1376969421-2">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_contacts</span><span class="p" data-group-id="1147768465-1">(</span><span class="p" data-group-id="1147768465-1">)</span><span class="w">
+</span><span class="p" data-group-id="1147768465-2">[</span><span class="p" data-group-id="1147768465-3">%</span><span class="nc" data-group-id="1147768465-3">Contact</span><span class="p" data-group-id="1147768465-3">{</span><span class="p" data-group-id="1147768465-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1147768465-2">]</span></code></pre>
   </section>
 </div>
 <div class="detail" id="list_contacts_by_last_name/1">
@@ -420,7 +456,7 @@ ContactsSh.Contacts
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">list_contacts_by_last_name(last_name)</span>
-      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L41" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L42" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -437,8 +473,8 @@ when last_name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_contacts_by_last_name</span><span class="p" data-group-id="0432441058-1">(</span><span class="s">&quot;LastNameA&quot;</span><span class="p" data-group-id="0432441058-1">)</span><span class="w">
-</span><span class="p" data-group-id="0432441058-2">[</span><span class="p" data-group-id="0432441058-3">%</span><span class="nc" data-group-id="0432441058-3">Contact</span><span class="p" data-group-id="0432441058-3">{</span><span class="ss">last_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LastNameA&quot;</span><span class="p" data-group-id="0432441058-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="0432441058-2">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_contacts_by_last_name</span><span class="p" data-group-id="9505656983-1">(</span><span class="s">&quot;LastNameA&quot;</span><span class="p" data-group-id="9505656983-1">)</span><span class="w">
+</span><span class="p" data-group-id="9505656983-2">[</span><span class="p" data-group-id="9505656983-3">%</span><span class="nc" data-group-id="9505656983-3">Contact</span><span class="p" data-group-id="9505656983-3">{</span><span class="ss">last_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LastNameA&quot;</span><span class="p" data-group-id="9505656983-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="9505656983-2">]</span></code></pre>
   </section>
 </div>
 <div class="detail" id="update_contact/2">
@@ -448,7 +484,7 @@ when last_name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">update_contact(contact, attrs)</span>
-      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L96" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L103" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -465,11 +501,11 @@ when last_name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_contact</span><span class="p" data-group-id="2800992471-1">(</span><span class="n">contact</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2800992471-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="2800992471-2">}</span><span class="p" data-group-id="2800992471-1">)</span><span class="w">
-</span><span class="p" data-group-id="2800992471-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2800992471-4">%</span><span class="nc" data-group-id="2800992471-4">Contact</span><span class="p" data-group-id="2800992471-4">{</span><span class="p" data-group-id="2800992471-4">}</span><span class="p" data-group-id="2800992471-3">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_contact</span><span class="p" data-group-id="0922978617-1">(</span><span class="n">contact</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0922978617-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="0922978617-2">}</span><span class="p" data-group-id="0922978617-1">)</span><span class="w">
+</span><span class="p" data-group-id="0922978617-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0922978617-4">%</span><span class="nc" data-group-id="0922978617-4">Contact</span><span class="p" data-group-id="0922978617-4">{</span><span class="p" data-group-id="0922978617-4">}</span><span class="p" data-group-id="0922978617-3">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">update_contact</span><span class="p" data-group-id="2800992471-5">(</span><span class="n">contact</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2800992471-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="2800992471-6">}</span><span class="p" data-group-id="2800992471-5">)</span><span class="w">
-</span><span class="p" data-group-id="2800992471-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2800992471-8">%</span><span class="nc" data-group-id="2800992471-8">Ecto.Changeset</span><span class="p" data-group-id="2800992471-8">{</span><span class="p" data-group-id="2800992471-8">}</span><span class="p" data-group-id="2800992471-7">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_contact</span><span class="p" data-group-id="0922978617-5">(</span><span class="n">contact</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0922978617-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="0922978617-6">}</span><span class="p" data-group-id="0922978617-5">)</span><span class="w">
+</span><span class="p" data-group-id="0922978617-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0922978617-8">%</span><span class="nc" data-group-id="0922978617-8">Ecto.Changeset</span><span class="p" data-group-id="0922978617-8">{</span><span class="p" data-group-id="0922978617-8">}</span><span class="p" data-group-id="0922978617-7">}</span></code></pre>
   </section>
 </div>
         </section>
