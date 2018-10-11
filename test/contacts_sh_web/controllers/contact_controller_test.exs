@@ -6,24 +6,24 @@ defmodule ContactsShWeb.ContactControllerTest do
 
   @create_attrs %{
     delete: false,
-    email: "some email",
+    email: "email@domain.com",
     last_name: "LastNameA",
-    name: "some name",
-    phone: "some phone"
+    name: "Contact Names",
+    phone: "+5491155555555"
   }
   @create_attrs_2 %{
     delete: false,
-    email: "some email",
+    email: "email@domain.com",
     last_name: "LastNameB",
-    name: "some name",
-    phone: "some phone"
+    name: "Contact Names",
+    phone: "+5491155555555"
   }
   @update_attrs %{
     delete: false,
-    email: "some updated email",
+    email: "updatedemail@domain.com",
     last_name: "UpdatedLastName",
-    name: "some updated name",
-    phone: "some updated phone"
+    name: "Updated Contact Name",
+    phone: "+5491166666666"
   }
   @invalid_attrs %{delete: nil, email: nil, last_name: nil, name: nil, phone: nil}
 
@@ -74,10 +74,10 @@ defmodule ContactsShWeb.ContactControllerTest do
       assert json_response(conn, 200)["data"] == %{
                "id" => id,
                "delete" => false,
-               "email" => "some email",
+               "email" => "email@domain.com",
                "last_name" => "LastNameA",
-               "name" => "some name",
-               "phone" => "some phone"
+               "name" => "Contact Names",
+               "phone" => "+5491155555555"
              }
     end
 
@@ -99,10 +99,10 @@ defmodule ContactsShWeb.ContactControllerTest do
       assert json_response(conn, 200)["data"] == %{
                "id" => id,
                "delete" => false,
-               "email" => "some updated email",
+               "email" => "updatedemail@domain.com",
                "last_name" => "UpdatedLastName",
-               "name" => "some updated name",
-               "phone" => "some updated phone"
+               "name" => "Updated Contact Name",
+               "phone" => "+5491166666666"
              }
     end
 

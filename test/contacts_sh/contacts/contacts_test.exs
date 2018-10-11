@@ -8,24 +8,24 @@ defmodule ContactsSh.ContactsTest do
 
     @valid_attrs %{
       delete: false,
-      email: "some email",
+      email: "email@domain.com",
       last_name: "LastNameA",
-      name: "some name",
-      phone: "some phone"
+      name: "Contact Names",
+      phone: "+5491155555555"
     }
     @valid_attrs_2 %{
       delete: false,
-      email: "some email",
+      email: "email@domain.com",
       last_name: "LastNameB",
-      name: "some name",
-      phone: "some phone"
+      name: "Contact Names",
+      phone: "+5491155555555"
     }
     @update_attrs %{
       delete: false,
-      email: "some updated email",
+      email: "updatedemail@domain.com",
       last_name: "UpdatedLastName",
-      name: "some updated name",
-      phone: "some updated phone"
+      name: "Updated Contact Name",
+      phone: "+5491166666666"
     }
     @invalid_attrs %{delete: nil, email: nil, last_name: nil, name: nil, phone: nil}
 
@@ -75,10 +75,10 @@ defmodule ContactsSh.ContactsTest do
     test "create_contact/1 with valid data creates a contact" do
       assert {:ok, %Contact{} = contact} = Contacts.create_contact(@valid_attrs)
       assert contact.delete == false
-      assert contact.email == "some email"
+      assert contact.email == "email@domain.com"
       assert contact.last_name == "LastNameA"
-      assert contact.name == "some name"
-      assert contact.phone == "some phone"
+      assert contact.name == "Contact Names"
+      assert contact.phone == "+5491155555555"
     end
 
     test "create_contact/1 with invalid data returns error changeset" do
@@ -90,10 +90,10 @@ defmodule ContactsSh.ContactsTest do
       assert {:ok, contact} = Contacts.update_contact(contact, @update_attrs)
       assert %Contact{} = contact
       assert contact.delete == false
-      assert contact.email == "some updated email"
+      assert contact.email == "updatedemail@domain.com"
       assert contact.last_name == "UpdatedLastName"
-      assert contact.name == "some updated name"
-      assert contact.phone == "some updated phone"
+      assert contact.name == "Updated Contact Name"
+      assert contact.phone == "+5491166666666"
     end
 
     test "update_contact/2 with invalid data returns error changeset" do
