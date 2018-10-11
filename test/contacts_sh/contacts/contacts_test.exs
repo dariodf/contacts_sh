@@ -59,6 +59,15 @@ defmodule ContactsSh.ContactsTest do
       assert contact_2.last_name == gen_contact_2.last_name
     end
 
+    test "list_contacts/0 shouldn't return contacts marked for deletion" do
+      [gen_contact_2, gen_contact_1] = contacts_fixture()
+      contacts = Contacts.list_contacts()
+      assert length(contacts) == 2
+      [contact_1, _] = contacts
+      Contacts.delete_contact(contact_1)
+      assert length(Contacts.list_contacts()) == 1
+    end
+
     test "list_contacts_by_last_name/1 returns all contacts with the specified last_name" do
       [_, gen_contact_1] = contacts_fixture()
       contacts = Contacts.list_contacts_by_last_name(gen_contact_1.last_name)
@@ -67,9 +76,25 @@ defmodule ContactsSh.ContactsTest do
       assert contact_1.last_name == gen_contact_1.last_name
     end
 
+    test "list_contacts_by_last_name/1 shouldn't return contacts marked for deletion" do
+      [_, gen_contact_1] = contacts_fixture()
+      contacts = Contacts.list_contacts_by_last_name(gen_contact_1.last_name)
+      assert length(contacts) == 1
+      [contact_1] = contacts
+      Contacts.delete_contact(contact_1)
+      assert length(Contacts.list_contacts_by_last_name(gen_contact_1.last_name)) == 0
+    end
+
     test "get_contact!/1 returns the contact with given id" do
       contact = contact_fixture()
       assert Contacts.get_contact!(contact.id) == contact
+    end
+
+    test "get_contact!/1 shouldn't return a contact marked for deletion" do
+      contact = contact_fixture()
+      assert Contacts.get_contact!(contact.id) == contact
+      Contacts.delete_contact(contact)
+      assert_raise Ecto.NoResultsError, fn -> Contacts.get_contact!(contact.id) end
     end
 
     test "create_contact/1 with valid data creates a contact" do
@@ -102,10 +127,10 @@ defmodule ContactsSh.ContactsTest do
       assert contact == Contacts.get_contact!(contact.id)
     end
 
-    test "delete_contact/1 deletes the contact" do
+    test "delete_contact/1 marks the contact for deletion" do
       contact = contact_fixture()
       assert {:ok, %Contact{}} = Contacts.delete_contact(contact)
-      assert_raise Ecto.NoResultsError, fn -> Contacts.get_contact!(contact.id) end
+      assert true == Contacts.get_contact!(contact.id).delete
     end
 
     test "change_contact/1 returns a contact changeset" do
