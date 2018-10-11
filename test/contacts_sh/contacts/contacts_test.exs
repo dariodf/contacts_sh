@@ -60,7 +60,7 @@ defmodule ContactsSh.ContactsTest do
     end
 
     test "list_contacts/0 shouldn't return contacts marked for deletion" do
-      [gen_contact_2, gen_contact_1] = contacts_fixture()
+      contacts_fixture()
       contacts = Contacts.list_contacts()
       assert length(contacts) == 2
       [contact_1, _] = contacts
@@ -130,7 +130,7 @@ defmodule ContactsSh.ContactsTest do
     test "delete_contact/1 marks the contact for deletion" do
       contact = contact_fixture()
       assert {:ok, %Contact{}} = Contacts.delete_contact(contact)
-      assert true == Contacts.get_contact!(contact.id).delete
+      assert true == Repo.get!(Contact, contact.id).delete
     end
 
     test "change_contact/1 returns a contact changeset" do
