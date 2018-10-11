@@ -1,6 +1,7 @@
 defmodule ContactsSh.Repo do
   use Ecto.Repo, otp_app: :contacts_sh
 
+  @moduledoc false
   @doc """
   Dynamically loads the repository url from the
   DATABASE_URL environment variable.

@@ -1,9 +1,5 @@
 defmodule ContactsShWeb.FallbackController do
-  @moduledoc """
-  Translates controller action results into valid `Plug.Conn` responses.
-
-  See `Phoenix.Controller.action_fallback/1` for more details.
-  """
+  @moduledoc false
   use ContactsShWeb, :controller
 
   def call(conn, {:error, %Ecto.Changeset{} = changeset}) do

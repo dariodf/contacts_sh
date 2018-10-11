@@ -1,2 +1,3 @@
-# contacts_sh
-Contacts challenge
+# Contacts SH
+
+Contacts challenge!

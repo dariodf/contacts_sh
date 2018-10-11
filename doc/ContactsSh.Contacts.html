@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>ContactsSh.Contacts – Contacts SH v0.0.1</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-a8a58576b8.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Contacts SH      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.0.1
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Contacts SH v0.0.1</small>
+ContactsSh.Contacts        
+          <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>The Contacts context.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:contact/0">contact()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:contact/1">contact(last_name)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:contact_changeset/0">contact_changeset()</a>
+  </div>
+</div>
+  </div>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_contact/1">change_contact(contact)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking contact changes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_contact/1">create_contact(attrs \\ %{})</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a contact</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_contact/1">delete_contact(contact)</a>
+  </div>
+    <div class="summary-synopsis"><p>Deletes a Contact</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_contact!/1">get_contact!(id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Gets a single contact</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_contacts/0">list_contacts()</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the list of contacts</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_contacts_by_last_name/1">list_contacts_by_last_name(last_name)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the list of contacts by their last name</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_contact/2">update_contact(contact, attrs)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates a contact</p>
+</div>
+</div>
+  </div>
+          
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+<div class="detail" id="t:contact/0">
+    <div class="detail-header">
+    <a href="#t:contact/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">contact()</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L11" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>contact() :: %ContactsSh.Contacts.Contact{
+  __meta__: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  delete: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  email: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  inserted_at: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  last_name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  phone: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  updated_at: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</div>
+<div class="detail" id="t:contact/1">
+    <div class="detail-header">
+    <a href="#t:contact/1" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">contact(last_name)</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L12" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>contact(last_name) :: %ContactsSh.Contacts.Contact{
+  __meta__: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  delete: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  email: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  id: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  inserted_at: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  last_name: last_name,
+  name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  phone: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  updated_at: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</div>
+<div class="detail" id="t:contact_changeset/0">
+    <div class="detail-header">
+    <a href="#t:contact_changeset/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">contact_changeset()</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L13" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>contact_changeset() :: %Ecto.Changeset{
+  action: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  changes: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  constraints: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  empty_values: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  errors: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  filters: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  params: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  prepare: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  repo: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  repo_opts: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  required: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  types: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  valid?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  validations: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</div>
+          </div>
+        </section>
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="change_contact/1">
+    <div class="detail-header">
+    <a href="#change_contact/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">change_contact(contact)</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L128" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking contact changes.</p>
+<h2 id="change_contact/1-examples" class="section-heading">
+  <a href="#change_contact/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_contact</span><span class="p" data-group-id="1073627546-1">(</span><span class="n">contact</span><span class="p" data-group-id="1073627546-1">)</span><span class="w">
+</span><span class="p" data-group-id="1073627546-2">%</span><span class="nc" data-group-id="1073627546-2">Ecto.Changeset</span><span class="p" data-group-id="1073627546-2">{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1073627546-3">%</span><span class="nc" data-group-id="1073627546-3">Contact</span><span class="p" data-group-id="1073627546-3">{</span><span class="p" data-group-id="1073627546-3">}</span><span class="p" data-group-id="1073627546-2">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="create_contact/1">
+  
+    <span id="create_contact/0"></span>
+  <div class="detail-header">
+    <a href="#create_contact/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">create_contact(attrs \\ %{})</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L77" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>create_contact(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: {:ok, <a href="#t:contact/0">contact</a>()} | {:error, <a href="#t:contact_changeset/0">contact_changeset</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Creates a contact.</p>
+<h2 id="create_contact/1-examples" class="section-heading">
+  <a href="#create_contact/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_contact</span><span class="p" data-group-id="8944281262-1">(</span><span class="p" data-group-id="8944281262-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="8944281262-2">}</span><span class="p" data-group-id="8944281262-1">)</span><span class="w">
+</span><span class="p" data-group-id="8944281262-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8944281262-4">%</span><span class="nc" data-group-id="8944281262-4">Contact</span><span class="p" data-group-id="8944281262-4">{</span><span class="p" data-group-id="8944281262-4">}</span><span class="p" data-group-id="8944281262-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_contact</span><span class="p" data-group-id="8944281262-5">(</span><span class="p" data-group-id="8944281262-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="8944281262-6">}</span><span class="p" data-group-id="8944281262-5">)</span><span class="w">
+</span><span class="p" data-group-id="8944281262-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8944281262-8">%</span><span class="nc" data-group-id="8944281262-8">Ecto.Changeset</span><span class="p" data-group-id="8944281262-8">{</span><span class="p" data-group-id="8944281262-8">}</span><span class="p" data-group-id="8944281262-7">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="delete_contact/1">
+    <div class="detail-header">
+    <a href="#delete_contact/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">delete_contact(contact)</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L115" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>delete_contact(<a href="#t:contact/0">contact</a>()) :: {:ok, <a href="#t:contact/0">contact</a>()} | {:error, <a href="#t:contact_changeset/0">contact_changeset</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Deletes a Contact.</p>
+<h2 id="delete_contact/1-examples" class="section-heading">
+  <a href="#delete_contact/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_contact</span><span class="p" data-group-id="0399249815-1">(</span><span class="n">contact</span><span class="p" data-group-id="0399249815-1">)</span><span class="w">
+</span><span class="p" data-group-id="0399249815-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0399249815-3">%</span><span class="nc" data-group-id="0399249815-3">Contact</span><span class="p" data-group-id="0399249815-3">{</span><span class="p" data-group-id="0399249815-3">}</span><span class="p" data-group-id="0399249815-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_contact</span><span class="p" data-group-id="0399249815-4">(</span><span class="n">contact</span><span class="p" data-group-id="0399249815-4">)</span><span class="w">
+</span><span class="p" data-group-id="0399249815-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0399249815-6">%</span><span class="nc" data-group-id="0399249815-6">Ecto.Changeset</span><span class="p" data-group-id="0399249815-6">{</span><span class="p" data-group-id="0399249815-6">}</span><span class="p" data-group-id="0399249815-5">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="get_contact!/1">
+    <div class="detail-header">
+    <a href="#get_contact!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_contact!(id)</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L62" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>get_contact!(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="#t:contact/0">contact</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Gets a single contact.</p>
+<p>Raises <a href="https://hexdocs.pm/ecto/2.2.11/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the Contact does not exist.</p>
+<h2 id="get_contact!/1-examples" class="section-heading">
+  <a href="#get_contact!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_contact!</span><span class="p" data-group-id="7733857374-1">(</span><span class="mi">123</span><span class="p" data-group-id="7733857374-1">)</span><span class="w">
+</span><span class="p" data-group-id="7733857374-2">%</span><span class="nc" data-group-id="7733857374-2">Contact</span><span class="p" data-group-id="7733857374-2">{</span><span class="p" data-group-id="7733857374-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_contact!</span><span class="p" data-group-id="7733857374-3">(</span><span class="mi">456</span><span class="p" data-group-id="7733857374-3">)</span><span class="w">
+</span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="list_contacts/0">
+    <div class="detail-header">
+    <a href="#list_contacts/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">list_contacts()</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L24" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>list_contacts() :: [<a href="#t:contact/0">contact</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns the list of contacts.</p>
+<h2 id="list_contacts/0-examples" class="section-heading">
+  <a href="#list_contacts/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_contacts</span><span class="p" data-group-id="1376969421-1">(</span><span class="p" data-group-id="1376969421-1">)</span><span class="w">
+</span><span class="p" data-group-id="1376969421-2">[</span><span class="p" data-group-id="1376969421-3">%</span><span class="nc" data-group-id="1376969421-3">Contact</span><span class="p" data-group-id="1376969421-3">{</span><span class="p" data-group-id="1376969421-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1376969421-2">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="list_contacts_by_last_name/1">
+    <div class="detail-header">
+    <a href="#list_contacts_by_last_name/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">list_contacts_by_last_name(last_name)</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L41" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>list_contacts_by_last_name(last_name) :: [<a href="#t:contact/1">contact</a>(last_name)]
+when last_name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns the list of contacts by their last name.</p>
+<h2 id="list_contacts_by_last_name/1-examples" class="section-heading">
+  <a href="#list_contacts_by_last_name/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_contacts_by_last_name</span><span class="p" data-group-id="0432441058-1">(</span><span class="s">&quot;LastNameA&quot;</span><span class="p" data-group-id="0432441058-1">)</span><span class="w">
+</span><span class="p" data-group-id="0432441058-2">[</span><span class="p" data-group-id="0432441058-3">%</span><span class="nc" data-group-id="0432441058-3">Contact</span><span class="p" data-group-id="0432441058-3">{</span><span class="ss">last_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LastNameA&quot;</span><span class="p" data-group-id="0432441058-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="0432441058-2">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="update_contact/2">
+    <div class="detail-header">
+    <a href="#update_contact/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">update_contact(contact, attrs)</span>
+      <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/contacts_sh/contacts/contacts.ex#L96" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>update_contact(<a href="#t:contact/0">contact</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="#t:contact/0">contact</a>()} | {:error, <a href="#t:contact_changeset/0">contact_changeset</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Updates a contact.</p>
+<h2 id="update_contact/2-examples" class="section-heading">
+  <a href="#update_contact/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_contact</span><span class="p" data-group-id="2800992471-1">(</span><span class="n">contact</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2800992471-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="2800992471-2">}</span><span class="p" data-group-id="2800992471-1">)</span><span class="w">
+</span><span class="p" data-group-id="2800992471-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2800992471-4">%</span><span class="nc" data-group-id="2800992471-4">Contact</span><span class="p" data-group-id="2800992471-4">{</span><span class="p" data-group-id="2800992471-4">}</span><span class="p" data-group-id="2800992471-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_contact</span><span class="p" data-group-id="2800992471-5">(</span><span class="n">contact</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2800992471-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="2800992471-6">}</span><span class="p" data-group-id="2800992471-5">)</span><span class="w">
+</span><span class="p" data-group-id="2800992471-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2800992471-8">%</span><span class="nc" data-group-id="2800992471-8">Ecto.Changeset</span><span class="p" data-group-id="2800992471-8">{</span><span class="p" data-group-id="2800992471-8">}</span><span class="p" data-group-id="2800992471-7">}</span></code></pre>
+  </section>
+</div>
+        </section>
+
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+
