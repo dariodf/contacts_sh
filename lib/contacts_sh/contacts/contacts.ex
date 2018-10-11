@@ -17,6 +17,7 @@ defmodule ContactsSh.Contacts do
       [%Contact{}, ...]
 
   """
+  @spec list_contacts() :: list(%Contact{})
   def list_contacts do
     Contact
     |> order_by(asc: :last_name)
@@ -32,6 +33,7 @@ defmodule ContactsSh.Contacts do
       [%Contact{last_name: "LastNameA"}, ...]
 
   """
+  @spec list_contacts_by_last_name(String.t()) :: list(%Contact{last_name: String.t()})
   def list_contacts_by_last_name(last_name) do
     Contact
     |> where(last_name: ^last_name)
@@ -52,6 +54,7 @@ defmodule ContactsSh.Contacts do
       ** (Ecto.NoResultsError)
 
   """
+  @spec get_contact!(integer()) :: %Contact{}
   def get_contact!(id), do: Repo.get!(Contact, id)
 
   @doc """
@@ -66,6 +69,7 @@ defmodule ContactsSh.Contacts do
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec create_contact(map()) :: {:ok, %Contact{}} | {:error, %Ecto.Changeset{}}
   def create_contact(attrs \\ %{}) do
     %Contact{}
     |> Contact.changeset(attrs)
@@ -84,6 +88,7 @@ defmodule ContactsSh.Contacts do
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec update_contact(%Contact{}, map()) :: {:ok, %Contact{}} | {:error, %Ecto.Changeset{}}
   def update_contact(%Contact{} = contact, attrs) do
     contact
     |> Contact.changeset(attrs)
@@ -102,6 +107,7 @@ defmodule ContactsSh.Contacts do
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec delete_contact(%Contact{}) :: {:ok, %Contact{}} | {:error, %Ecto.Changeset{}}
   def delete_contact(%Contact{} = contact) do
     Repo.delete(contact)
   end
