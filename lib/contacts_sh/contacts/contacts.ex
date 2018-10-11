@@ -126,6 +126,23 @@ defmodule ContactsSh.Contacts do
   end
 
   @doc """
+  Deletes contacts marked for deletion. 
+  Returns a tuple with the amount of deleted contacts and the deleted contacts list.
+
+  ## Examples
+
+      iex> clean_contacts()
+      {1, [%Contact{}]}
+
+  """
+  @spec clean_contacts() :: {integer(), list(contact())} | {integer(), nil}
+  def clean_contacts() do
+    Contact
+    |> where(delete: true)
+    |> Repo.delete_all(returning: true)
+  end
+
+  @doc """
   Returns an `%Ecto.Changeset{}` for tracking contact changes.
 
   ## Examples

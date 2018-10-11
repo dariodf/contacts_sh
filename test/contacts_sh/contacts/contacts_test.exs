@@ -133,6 +133,16 @@ defmodule ContactsSh.ContactsTest do
       assert true == Repo.get!(Contact, contact.id).delete
     end
 
+    test "clean_contacts/0 deletes contacts marked for deletion" do
+      contacts_fixture()
+      contacts = Repo.all(Contact)
+      assert length(contacts) == 2
+      [contact_2, contact_1] = contacts
+      assert {:ok, %Contact{}} = Contacts.delete_contact(contact_1)
+      assert {1, [%Contact{}]} = Contacts.clean_contacts()
+      assert [contact_2] == Repo.all(Contact)
+    end
+
     test "change_contact/1 returns a contact changeset" do
       contact = contact_fixture()
       assert %Ecto.Changeset{} = Contacts.change_contact(contact)
