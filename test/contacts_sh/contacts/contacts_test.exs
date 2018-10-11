@@ -6,8 +6,27 @@ defmodule ContactsSh.ContactsTest do
   describe "contacts" do
     alias ContactsSh.Contacts.Contact
 
-    @valid_attrs %{delete: true, email: "some email", last_name: "some last_name", name: "some name", phone: "some phone"}
-    @update_attrs %{delete: false, email: "some updated email", last_name: "some updated last_name", name: "some updated name", phone: "some updated phone"}
+    @valid_attrs %{
+      delete: false,
+      email: "email@domain.com",
+      last_name: "LastNameA",
+      name: "Contact Names",
+      phone: "+5491155555555"
+    }
+    @valid_attrs_2 %{
+      delete: false,
+      email: "email@domain.com",
+      last_name: "LastNameB",
+      name: "Contact Names",
+      phone: "+5491155555555"
+    }
+    @update_attrs %{
+      delete: false,
+      email: "updatedemail@domain.com",
+      last_name: "UpdatedLastName",
+      name: "Updated Contact Name",
+      phone: "+5491166666666"
+    }
     @invalid_attrs %{delete: nil, email: nil, last_name: nil, name: nil, phone: nil}
 
     def contact_fixture(attrs \\ %{}) do
@@ -19,9 +38,33 @@ defmodule ContactsSh.ContactsTest do
       contact
     end
 
-    test "list_contacts/0 returns all contacts" do
-      contact = contact_fixture()
-      assert Contacts.list_contacts() == [contact]
+    def contacts_fixture() do
+      {:ok, contact_2} =
+        @valid_attrs_2
+        |> Contacts.create_contact()
+
+      {:ok, contact_1} =
+        @valid_attrs
+        |> Contacts.create_contact()
+
+      [contact_2, contact_1]
+    end
+
+    test "list_contacts/0 returns all contacts ordered by last_name" do
+      [gen_contact_2, gen_contact_1] = contacts_fixture()
+      contacts = Contacts.list_contacts()
+      assert length(contacts) == 2
+      [contact_1, contact_2] = contacts
+      assert contact_1.last_name == gen_contact_1.last_name
+      assert contact_2.last_name == gen_contact_2.last_name
+    end
+
+    test "list_contacts_by_last_name/1 returns all contacts with the specified last_name" do
+      [_, gen_contact_1] = contacts_fixture()
+      contacts = Contacts.list_contacts_by_last_name(gen_contact_1.last_name)
+      assert length(contacts) == 1
+      [contact_1] = contacts
+      assert contact_1.last_name == gen_contact_1.last_name
     end
 
     test "get_contact!/1 returns the contact with given id" do
@@ -31,11 +74,11 @@ defmodule ContactsSh.ContactsTest do
 
     test "create_contact/1 with valid data creates a contact" do
       assert {:ok, %Contact{} = contact} = Contacts.create_contact(@valid_attrs)
-      assert contact.delete == true
-      assert contact.email == "some email"
-      assert contact.last_name == "some last_name"
-      assert contact.name == "some name"
-      assert contact.phone == "some phone"
+      assert contact.delete == false
+      assert contact.email == "email@domain.com"
+      assert contact.last_name == "LastNameA"
+      assert contact.name == "Contact Names"
+      assert contact.phone == "+5491155555555"
     end
 
     test "create_contact/1 with invalid data returns error changeset" do
@@ -47,10 +90,10 @@ defmodule ContactsSh.ContactsTest do
       assert {:ok, contact} = Contacts.update_contact(contact, @update_attrs)
       assert %Contact{} = contact
       assert contact.delete == false
-      assert contact.email == "some updated email"
-      assert contact.last_name == "some updated last_name"
-      assert contact.name == "some updated name"
-      assert contact.phone == "some updated phone"
+      assert contact.email == "updatedemail@domain.com"
+      assert contact.last_name == "UpdatedLastName"
+      assert contact.name == "Updated Contact Name"
+      assert contact.phone == "+5491166666666"
     end
 
     test "update_contact/2 with invalid data returns error changeset" do

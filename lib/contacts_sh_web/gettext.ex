@@ -1,5 +1,6 @@
 defmodule ContactsShWeb.Gettext do
-  @moduledoc """
+  @moduledoc false
+  @doc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),

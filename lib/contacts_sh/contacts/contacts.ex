@@ -8,6 +8,9 @@ defmodule ContactsSh.Contacts do
 
   alias ContactsSh.Contacts.Contact
 
+  @type contact() :: %Contact{}
+  @type contact(last_name) :: %Contact{last_name: last_name}
+  @type contact_changeset() :: %Ecto.Changeset{}
   @doc """
   Returns the list of contacts.
 
@@ -17,8 +20,28 @@ defmodule ContactsSh.Contacts do
       [%Contact{}, ...]
 
   """
+  @spec list_contacts() :: list(contact())
   def list_contacts do
-    Repo.all(Contact)
+    Contact
+    |> order_by(asc: :last_name)
+    |> Repo.all()
+  end
+
+  @doc """
+  Returns the list of contacts by their last name.
+
+  ## Examples
+
+      iex> list_contacts_by_last_name("LastNameA")
+      [%Contact{last_name: "LastNameA"}, ...]
+
+  """
+  @spec list_contacts_by_last_name(last_name) :: list(contact(last_name))
+        when last_name: String.t()
+  def list_contacts_by_last_name(last_name) do
+    Contact
+    |> where(last_name: ^last_name)
+    |> Repo.all()
   end
 
   @doc """
@@ -35,6 +58,7 @@ defmodule ContactsSh.Contacts do
       ** (Ecto.NoResultsError)
 
   """
+  @spec get_contact!(integer()) :: contact()
   def get_contact!(id), do: Repo.get!(Contact, id)
 
   @doc """
@@ -49,6 +73,7 @@ defmodule ContactsSh.Contacts do
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec create_contact(map()) :: {:ok, contact()} | {:error, contact_changeset()}
   def create_contact(attrs \\ %{}) do
     %Contact{}
     |> Contact.changeset(attrs)
@@ -67,6 +92,7 @@ defmodule ContactsSh.Contacts do
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec update_contact(contact(), map()) :: {:ok, contact()} | {:error, contact_changeset()}
   def update_contact(%Contact{} = contact, attrs) do
     contact
     |> Contact.changeset(attrs)
@@ -85,6 +111,7 @@ defmodule ContactsSh.Contacts do
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec delete_contact(contact()) :: {:ok, contact()} | {:error, contact_changeset()}
   def delete_contact(%Contact{} = contact) do
     Repo.delete(contact)
   end

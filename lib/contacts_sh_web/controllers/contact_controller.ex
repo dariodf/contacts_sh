@@ -4,7 +4,12 @@ defmodule ContactsShWeb.ContactController do
   alias ContactsSh.Contacts
   alias ContactsSh.Contacts.Contact
 
-  action_fallback ContactsShWeb.FallbackController
+  action_fallback(ContactsShWeb.FallbackController)
+
+  def index(conn, %{"last_name" => last_name}) do
+    contacts = Contacts.list_contacts_by_last_name(last_name)
+    render(conn, "index.json", contacts: contacts)
+  end
 
   def index(conn, _params) do
     contacts = Contacts.list_contacts()
@@ -35,6 +40,7 @@ defmodule ContactsShWeb.ContactController do
 
   def delete(conn, %{"id" => id}) do
     contact = Contacts.get_contact!(id)
+
     with {:ok, %Contact{}} <- Contacts.delete_contact(contact) do
       send_resp(conn, :no_content, "")
     end

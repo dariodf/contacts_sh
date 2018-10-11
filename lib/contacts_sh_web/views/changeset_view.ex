@@ -1,6 +1,7 @@
 defmodule ContactsShWeb.ChangesetView do
   use ContactsShWeb, :view
 
+  @moduledoc false
   @doc """
   Traverses and translates changeset errors.
 

@@ -1,21 +1,5 @@
 defmodule ContactsShWeb do
-  @moduledoc """
-  The entrypoint for defining your web interface, such
-  as controllers, views, channels and so on.
-
-  This can be used in your application as:
-
-      use ContactsShWeb, :controller
-      use ContactsShWeb, :view
-
-  The definitions below will be executed for every view,
-  controller, etc, so keep them short and clean, focused
-  on imports, uses and aliases.
-
-  Do NOT define functions inside the quoted expressions
-  below. Instead, define any helper function in modules
-  and import those modules here.
-  """
+  @moduledoc false
 
   def controller do
     quote do
@@ -28,8 +12,9 @@ defmodule ContactsShWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/contacts_sh_web/templates",
-                        namespace: ContactsShWeb
+      use Phoenix.View,
+        root: "lib/contacts_sh_web/templates",
+        namespace: ContactsShWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]

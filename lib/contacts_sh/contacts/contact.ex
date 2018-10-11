@@ -2,13 +2,14 @@ defmodule ContactsSh.Contacts.Contact do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @moduledoc false
 
   schema "contacts" do
-    field :delete, :boolean, default: false
-    field :email, :string
-    field :last_name, :string
-    field :name, :string
-    field :phone, :string
+    field(:delete, :boolean, default: false)
+    field(:email, :string)
+    field(:last_name, :string)
+    field(:name, :string)
+    field(:phone, :string)
 
     timestamps()
   end

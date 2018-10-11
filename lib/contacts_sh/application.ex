@@ -1,6 +1,7 @@
 defmodule ContactsSh.Application do
   use Application
 
+  @moduledoc false
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
@@ -11,7 +12,7 @@ defmodule ContactsSh.Application do
       # Start the Ecto repository
       supervisor(ContactsSh.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(ContactsShWeb.Endpoint, []),
+      supervisor(ContactsShWeb.Endpoint, [])
       # Start your own worker by calling: ContactsSh.Worker.start_link(arg1, arg2, arg3)
       # worker(ContactsSh.Worker, [arg1, arg2, arg3]),
     ]
