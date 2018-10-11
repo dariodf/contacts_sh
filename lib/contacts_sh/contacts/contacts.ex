@@ -24,6 +24,7 @@ defmodule ContactsSh.Contacts do
   def list_contacts do
     Contact
     |> order_by(asc: :last_name)
+    |> where(delete: false)
     |> Repo.all()
   end
 
@@ -41,6 +42,7 @@ defmodule ContactsSh.Contacts do
   def list_contacts_by_last_name(last_name) do
     Contact
     |> where(last_name: ^last_name)
+    |> where(delete: false)
     |> Repo.all()
   end
 
@@ -59,7 +61,12 @@ defmodule ContactsSh.Contacts do
 
   """
   @spec get_contact!(integer()) :: contact()
-  def get_contact!(id), do: Repo.get!(Contact, id)
+  def get_contact!(id) do
+    Contact
+    |> where(id: ^id)
+    |> where(delete: false)
+    |> Repo.one!()
+  end
 
   @doc """
   Creates a contact.
@@ -100,7 +107,7 @@ defmodule ContactsSh.Contacts do
   end
 
   @doc """
-  Deletes a Contact.
+  Marks a Contact for deletion. The contact shouldn't appear in listings anymore.
 
   ## Examples
 
@@ -113,7 +120,26 @@ defmodule ContactsSh.Contacts do
   """
   @spec delete_contact(contact()) :: {:ok, contact()} | {:error, contact_changeset()}
   def delete_contact(%Contact{} = contact) do
-    Repo.delete(contact)
+    contact
+    |> Contact.changeset(%{delete: true})
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes contacts marked for deletion. 
+  Returns a tuple with the amount of deleted contacts and the deleted contacts list.
+
+  ## Examples
+
+      iex> clean_contacts()
+      {1, [%Contact{}]}
+
+  """
+  @spec clean_contacts() :: {integer(), list(contact())} | {integer(), nil}
+  def clean_contacts() do
+    Contact
+    |> where(delete: true)
+    |> Repo.delete_all(returning: true)
   end
 
   @doc """

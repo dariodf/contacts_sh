@@ -4,12 +4,13 @@ fonts/icomoon.eot
 fonts/icomoon.svg
 fonts/icomoon.ttf
 fonts/icomoon.woff
-dist/sidebar_items-a8a58576b8.js
+dist/sidebar_items-c63bd160ec.js
 api-reference.html
 readme.html
 search.html
 404.html
 ContactsSh.Contacts.html
+ContactsSh.Otp.GarbageCollector.html
 ContactsShWeb.ContactController.html
 ContactsShWeb.Router.Helpers.html
 index.html
