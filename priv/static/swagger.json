@@ -1,0 +1,273 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/contacts/{id}": {
+      "put": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Update contact",
+        "responses": {
+          "422": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "description": "Unprocessable Entity"
+          },
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ContactResponse"
+            },
+            "description": "Updated Successfully"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "x-example": 3,
+            "type": "integer",
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "Contact ID"
+          },
+          {
+            "schema": {
+              "$ref": "#/definitions/ContactRequest"
+            },
+            "required": false,
+            "name": "contact",
+            "in": "body",
+            "description": "The contact details"
+          }
+        ],
+        "operationId": "ContactsShWeb.ContactController.update",
+        "description": "Update all attributes of a contact",
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Show Contact",
+        "responses": {
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "description": "Not Found"
+          },
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ContactResponse"
+            },
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "x-example": 123,
+            "type": "integer",
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "Contact ID"
+          }
+        ],
+        "operationId": "ContactsShWeb.ContactController.show",
+        "description": "Show a contact by ID"
+      },
+      "delete": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Delete Contact",
+        "responses": {
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "description": "Not Found"
+          },
+          "204": {
+            "description": "No Content - Deleted Successfully"
+          }
+        },
+        "parameters": [
+          {
+            "x-example": 3,
+            "type": "integer",
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "Contact ID"
+          }
+        ],
+        "operationId": "ContactsShWeb.ContactController.delete",
+        "description": "Delete a contact by ID"
+      }
+    },
+    "/contacts": {
+      "post": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Creates a new contact",
+        "responses": {
+          "422": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "description": "Unprocessable Entity"
+          },
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/ContactResponse"
+            },
+            "description": "Ok"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "$ref": "#/definitions/ContactRequest"
+            },
+            "required": true,
+            "name": "contact",
+            "in": "body",
+            "description": "New contact information"
+          }
+        ],
+        "operationId": "ContactsShWeb.ContactController.create",
+        "description": "Creates a new contact"
+      },
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Get contacts",
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ContactsResponse"
+            },
+            "description": "Success"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "required": false,
+            "name": "last_name",
+            "in": "query",
+            "description": "Last Name"
+          }
+        ],
+        "operationId": "ContactsShWeb.ContactController.index",
+        "description": "Gets all contacts. Can be filtered by last name."
+      }
+    }
+  },
+  "info": {
+    "version": "1.0",
+    "title": "Contacts SH"
+  },
+  "host": "localhost:4000",
+  "definitions": {
+    "Error": {
+      "type": "object",
+      "title": "Errors",
+      "required": [
+        "error"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "description": "The message of the error raised"
+        }
+      },
+      "description": "Error responses from the API"
+    },
+    "ContactsResponse": {
+      "type": "object",
+      "title": "ContactsReponse",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contact"
+          },
+          "description": "The contacts details"
+        }
+      },
+      "description": "Response schema for multiple contacts"
+    },
+    "ContactResponse": {
+      "type": "object",
+      "title": "ContactResponse",
+      "properties": {
+        "data": {
+          "description": "The contact details",
+          "$ref": "#/definitions/Contact"
+        }
+      },
+      "description": "Response schema for single contact"
+    },
+    "ContactRequest": {
+      "type": "object",
+      "title": "ContactRequest",
+      "properties": {
+        "contact": {
+          "description": "The contact details",
+          "$ref": "#/definitions/Contact"
+        }
+      },
+      "description": "POST body for creating a contact"
+    },
+    "Contact": {
+      "type": "object",
+      "title": "Contact",
+      "required": [
+        "phone",
+        "email",
+        "last_name",
+        "name"
+      ],
+      "properties": {
+        "phone": {
+          "type": "string",
+          "description": "Contact phone number"
+        },
+        "name": {
+          "type": "string",
+          "description": "Contact name"
+        },
+        "last_name": {
+          "type": "string",
+          "description": "Contact last name"
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email"
+        }
+      },
+      "example": {
+        "phone": "+5493426103171",
+        "name": "Darío",
+        "last_name": "De Filippis",
+        "email": "dariodefilippis@gmail.com"
+      },
+      "description": "A person's contact information"
+    }
+  }
+}
