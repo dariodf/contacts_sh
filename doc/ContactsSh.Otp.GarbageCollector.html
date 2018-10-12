@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.1">
-    <title>ContactsSh.Otp.GarbageCollector – Contacts SH v0.0.1</title>
+    <title>ContactsSh.Otp.GarbageCollector – Contacts SH v1.0.0</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-c63bd160ec.js"></script>
+    <script src="dist/sidebar_items-143023fd3a.js"></script>
     
   </head>
   <body data-type="modules">
@@ -28,7 +28,7 @@
       <h1 class="sidebar-projectName">
 Contacts SH      </h1>
       <h2 class="sidebar-projectVersion">
-        v0.0.1
+        v1.0.0
       </h2>
     </div>
   </a>
@@ -57,7 +57,7 @@ Contacts SH      </h1>
 
 
       <h1>
-        <small class="visible-xs">Contacts SH v0.0.1</small>
+        <small class="visible-xs">Contacts SH v1.0.0</small>
 ContactsSh.Otp.GarbageCollector        
           <a href="https://github.com/dariodf/contacts_sh/blob/master/lib/otp/garbage_collector.ex#L1" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -144,8 +144,8 @@ and another message to delete all marked contacts</p>
   <section class="docstring">
 <p>Sends one message to itself every 10 minutes to program the next deletion
 and another message to delete all marked contacts:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">Process</span><span class="o">.</span><span class="n">send_after</span><span class="p" data-group-id="2680105729-1">(</span><span class="n">self</span><span class="p" data-group-id="2680105729-2">(</span><span class="p" data-group-id="2680105729-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:clean_every_interval</span><span class="p">,</span><span class="w"> </span><span class="na">@delete_interval_ms</span><span class="p" data-group-id="2680105729-1">)</span><span class="w">
-</span><span class="n">send</span><span class="p" data-group-id="2680105729-3">(</span><span class="n">self</span><span class="p" data-group-id="2680105729-4">(</span><span class="p" data-group-id="2680105729-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:delete_contacts</span><span class="p" data-group-id="2680105729-3">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">Process</span><span class="o">.</span><span class="n">send_after</span><span class="p" data-group-id="0503499820-1">(</span><span class="n">self</span><span class="p" data-group-id="0503499820-2">(</span><span class="p" data-group-id="0503499820-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:clean_every_interval</span><span class="p">,</span><span class="w"> </span><span class="na">@delete_interval_ms</span><span class="p" data-group-id="0503499820-1">)</span><span class="w">
+</span><span class="n">send</span><span class="p" data-group-id="0503499820-3">(</span><span class="n">self</span><span class="p" data-group-id="0503499820-4">(</span><span class="p" data-group-id="0503499820-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:delete_contacts</span><span class="p" data-group-id="0503499820-3">)</span></code></pre>
   </section>
 </div>
         </section>
