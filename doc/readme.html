@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>Contacts SH – Contacts SH v1.0.0</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-143023fd3a.js"></script>
+    <script src="dist/sidebar_items-31c9242a32.js"></script>
     
   </head>
   <body data-type="extras">
@@ -58,6 +58,42 @@ Contacts SH      </h1>
 
 <h1>Contacts SH</h1>
 <p>Contacts challenge!</p>
+<h2 id="run-locally" class="section-heading">
+  <a href="#run-locally" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Run locally
+</h2>
+
+<ol>
+<li>Create/Migrate database:
+</li>
+</ol>
+<pre><code class="shell">mix ecto.create
+mix ecto.migrate</code></pre>
+<ol start="2">
+<li>Run server:
+</li>
+</ol>
+<pre><code class="nohighlight makeup elixir"><span class="n">iex</span><span class="w"> </span><span class="o">-</span><span class="nc">S</span><span class="w"> </span><span class="n">mix</span><span class="w"> </span><span class="n">phx</span><span class="o">.</span><span class="n">server</span></code></pre>
+<p>You can access the swagger page at http://localhost:4000/ to test the endpoints.</p>
+<h2 id="erlang-release" class="section-heading">
+  <a href="#erlang-release" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Erlang Release
+</h2>
+
+<p>To launch the release, run the following commands:</p>
+<ol>
+<li>Create database:
+</li>
+</ol>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MIX_ENV</span><span class="o">=</span><span class="n">prod</span><span class="w"> </span><span class="n">mix</span><span class="w"> </span><span class="n">ecto</span><span class="o">.</span><span class="n">create</span><span class="w">
+</span><span class="nc">MIX_ENV</span><span class="o">=</span><span class="n">prod</span><span class="w"> </span><span class="n">mix</span><span class="w"> </span><span class="n">ecto</span><span class="o">.</span><span class="n">migrate</span></code></pre>
+<ol start="2">
+<li>Build release and launch:
+</li>
+</ol>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MIX_ENV</span><span class="o">=</span><span class="n">prod</span><span class="w"> </span><span class="n">mix</span><span class="w"> </span><span class="n">release</span><span class="w">
+</span><span class="nc">PORT</span><span class="o">=</span><span class="mi">4000</span><span class="w"> </span><span class="c">_build</span><span class="o">/</span><span class="n">prod</span><span class="o">/</span><span class="n">rel</span><span class="o">/</span><span class="n">contacts_sh</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">contacts_sh</span><span class="w"> </span><span class="n">start</span></code></pre>
+<p>You can access the swagger page at <a href="http://localhost:4000/">http://localhost:4000/</a> to test the endpoints.</p>
       <footer class="footer">
         <p>
           <span class="line">

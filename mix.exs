@@ -53,7 +53,8 @@ defmodule ContactsSh.Mixfile do
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:phoenix_swagger, "~> 0.8"},
-      {:ex_json_schema, "~> 0.5"}
+      {:ex_json_schema, "~> 0.5"},
+      {:distillery, "~> 2.0"}
     ]
   end
 
