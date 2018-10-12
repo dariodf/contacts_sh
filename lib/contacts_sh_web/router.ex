@@ -12,7 +12,7 @@ defmodule ContactsShWeb.Router do
     resources("/contacts", ContactController, except: [:new, :edit])
   end
 
-  scope "/api/swagger" do
+  scope "/" do
     forward("/", PhoenixSwagger.Plug.SwaggerUI,
       otp_app: :contacts_sh,
       swagger_file: "swagger.json"
