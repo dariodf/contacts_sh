@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>ContactsSh.Otp.GarbageCollector – Contacts SH v1.0.0</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-143023fd3a.js"></script>
+    <script src="dist/sidebar_items-31c9242a32.js"></script>
     
   </head>
   <body data-type="modules">
@@ -144,8 +144,8 @@ and another message to delete all marked contacts</p>
   <section class="docstring">
 <p>Sends one message to itself every 10 minutes to program the next deletion
 and another message to delete all marked contacts:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">Process</span><span class="o">.</span><span class="n">send_after</span><span class="p" data-group-id="0503499820-1">(</span><span class="n">self</span><span class="p" data-group-id="0503499820-2">(</span><span class="p" data-group-id="0503499820-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:clean_every_interval</span><span class="p">,</span><span class="w"> </span><span class="na">@delete_interval_ms</span><span class="p" data-group-id="0503499820-1">)</span><span class="w">
-</span><span class="n">send</span><span class="p" data-group-id="0503499820-3">(</span><span class="n">self</span><span class="p" data-group-id="0503499820-4">(</span><span class="p" data-group-id="0503499820-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:delete_contacts</span><span class="p" data-group-id="0503499820-3">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">Process</span><span class="o">.</span><span class="n">send_after</span><span class="p" data-group-id="8554726425-1">(</span><span class="n">self</span><span class="p" data-group-id="8554726425-2">(</span><span class="p" data-group-id="8554726425-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:clean_every_interval</span><span class="p">,</span><span class="w"> </span><span class="na">@delete_interval_ms</span><span class="p" data-group-id="8554726425-1">)</span><span class="w">
+</span><span class="n">send</span><span class="p" data-group-id="8554726425-3">(</span><span class="n">self</span><span class="p" data-group-id="8554726425-4">(</span><span class="p" data-group-id="8554726425-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:delete_contacts</span><span class="p" data-group-id="8554726425-3">)</span></code></pre>
   </section>
 </div>
         </section>
